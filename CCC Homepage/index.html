@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CCC - Crazy Coders Corp</title>
+    <style>
+        :root {
+            --primary-blue: #1a73e8;
+            --hover-blue: #1557b0;
+            --bg-gray: #f8f9fa;
+            --card-bg: #ffffff;
+            --text-dark: #202124;
+            --text-secondary: #5f6368;
+            --input-bg: #f1f3f4;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #eef2f5;
+            color: var(--text-dark);
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+            padding-top: 50px;
+        }
+
+        /* Top Navigation */
+        nav {
+            width: 100%;
+            max-width: 800px;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .logo {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: var(--text-dark);
+            text-decoration: none;
+            margin-bottom: 20px;
+            display: block;
+        }
+
+        .tabs {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .tab-button {
+            background: none;
+            border: none;
+            padding: 10px 20px;
+            font-size: 1rem;
+            cursor: pointer;
+            color: var(--text-secondary);
+            border-bottom: 3px solid transparent;
+            transition: 0.3s;
+            font-weight: 500;
+        }
+
+        .tab-button:hover {
+            color: var(--primary-blue);
+        }
+
+        .tab-button.active {
+            color: var(--primary-blue);
+            border-bottom: 3px solid var(--primary-blue);
+        }
+
+        /* Card Container (Visual match to image) */
+        .container {
+            background-color: var(--card-bg);
+            width: 90%;
+            max-width: 600px;
+            padding: 40px;
+            border-radius: 30px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+            text-align: center;
+        }
+
+        h2 {
+            margin-top: 0;
+            font-size: 1.8rem;
+            margin-bottom: 30px;
+        }
+
+        .content-section {
+            display: none;
+            animation: fadeIn 0.3s ease;
+        }
+
+        .content-section.active {
+            display: block;
+        }
+
+        /* Buttons & Links */
+        .btn-link {
+            display: block;
+            background-color: var(--primary-blue);
+            color: white;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 12px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.1rem;
+            transition: background 0.2s, transform 0.1s;
+        }
+
+        .btn-link:hover {
+            background-color: var(--hover-blue);
+        }
+
+        .btn-link:active {
+            transform: scale(0.98);
+        }
+
+        .info-box {
+            background-color: var(--input-bg);
+            padding: 20px;
+            border-radius: 15px;
+            text-align: left;
+            margin-bottom: 20px;
+        }
+
+        .info-box h3 {
+            margin-top: 0;
+            color: var(--primary-blue);
+            font-size: 1.2rem;
+        }
+
+        .link-item {
+            display: block;
+            padding: 12px;
+            color: var(--primary-blue);
+            text-decoration: none;
+            border-radius: 8px;
+            transition: 0.2s;
+            font-weight: 500;
+        }
+
+        .link-item:hover {
+            background-color: #e2eafc;
+        }
+
+        .donation-text {
+            font-size: 1.2rem;
+            line-height: 1.6;
+            color: var(--text-secondary);
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <a href="#" class="logo">CCC</a>
+        <div class="tabs">
+            <button class="tab-button active" onclick="openTab(event, 'products')">Products</button>
+            <button class="tab-button" onclick="openTab(event, 'downloads')">Product Downloads</button>
+            <button class="tab-button" onclick="openTab(event, 'about')">About Us</button>
+            <button class="tab-button" onclick="openTab(event, 'links')">Useful Links</button>
+            <button class="tab-button" onclick="openTab(event, 'donations')">Donations</button>
+        </div>
+    </nav>
+
+    <div class="container">
+        
+        <!-- Products Tab: Opens in NEW tab -->
+        <div id="products" class="content-section active">
+            <h2>Our Products</h2>
+            <a href="assets/asset-compiler.html" target="_blank" class="btn-link">Asset Compiler</a>
+            <a href="assets/nzp-map-importer.html" target="_blank" class="btn-link">NZ:P Map Importer</a>
+            <a href="assets/web-socket-chat.html" target="_blank" class="btn-link">WIP WebSocket Chat</a>
+        </div>
+
+        <!-- Downloads Tab: Opens in NEW tab and triggers download with correct name -->
+        <div id="downloads" class="content-section">
+            <h2>Downloads</h2>
+            <a href="assets/asset-compiler.html" download="asset-compiler.html" target="_blank" class="btn-link">DOWNLOAD Asset Compiler</a>
+            <a href="assets/nzp-map-importer.html" download="nzp-map-importer.html" target="_blank" class="btn-link">DOWNLOAD NZ:P Map Importer</a>
+            <a href="assets/web-socket-chat.html" download="web-socket-chat.html" target="_blank" class="btn-link">DOWNLOAD WIP WebSocket Chat</a>
+        </div>
+
+        <!-- About Us Tab -->
+        <div id="about" class="content-section">
+            <h2>About Us</h2>
+            <p>Made by <strong>maximhelper</strong> and <strong>berriesryummy</strong></p>
+            
+            <div class="info-box">
+                <h3>Compiler Team</h3>
+                <p>Managed by: maximhelper</p>
+                <p>Contributors: 0</p>
+            </div>
+
+            <div class="info-box">
+                <h3>Zombies Team</h3>
+                <p>Managed by: maximhelper & berriesryummy</p>
+                <p>Contributors: 0</p>
+            </div>
+
+            <div class="info-box">
+                <h3>Web-Chat Team</h3>
+                <p>Managed by: berriesryummy</p>
+                <p>Contributors: 0</p>
+            </div>
+        </div>
+
+        <!-- Useful Links Tab: Opens in SAME tab -->
+        <div id="links" class="content-section">
+            <h2>Useful Links</h2>
+            <a href="https://discord.gg/Xm3kASw4ZC" class="link-item">CCC Discord</a>
+            <a href="https://discord.gg/Pj3bkJNPZj" class="link-item">NZ:P Discord</a>
+            
+            <hr style="border: 0; border-top: 1px solid #ddd; margin: 15px 0;">
+            
+            <a href="https://github.com/maximhelper" class="link-item">maximhelper Github</a>
+            <a href="https://github.com/crazy-coders-corp" class="link-item">CCC Github</a>
+            <a href="https://github.com/nzp-team" class="link-item">NZ:P Github</a>
+            <a href="https://github.com/bubbls" class="link-item">bubbls Github</a>
+            <a href="https://github.com/stinkalistic" class="link-item">Stinkalistic Github</a>
+        </div>
+
+        <!-- Donations Tab -->
+        <div id="donations" class="content-section">
+            <h2>Donations</h2>
+            <p class="donation-text">Meet any team member in-person and give them a dollar for their good work!</p>
+        </div>
+
+    </div>
+
+    <script>
+        function openTab(evt, tabName) {
+            var i, content, tablinks;
+            content = document.getElementsByClassName("content-section");
+            for (i = 0; i < content.length; i++) {
+                content[i].classList.remove("active");
+            }
+            tablinks = document.getElementsByClassName("tab-button");
+            for (i = 0; i < tablinks.length; i++) {
+                tablinks[i].classList.remove("active");
+            }
+            document.getElementById(tabName).classList.add("active");
+            evt.currentTarget.classList.add("active");
+        }
+    </script>
+</body>
+</html>
